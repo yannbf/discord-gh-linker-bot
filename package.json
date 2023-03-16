@@ -1,0 +1,16 @@
+{
+  "name": "discord-gh-linker-bot",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "ts-node --swc index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^19.0.7",
+    "discord.js": "^14.8.0",
+    "node-fetch": "^3.3.1",
+    "ts-node": "^10.9.1"
+  }
+}

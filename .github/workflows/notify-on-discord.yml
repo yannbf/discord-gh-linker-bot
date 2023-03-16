@@ -1,0 +1,21 @@
+name: "Check for Discord mentions in PRs"
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  check_for_discord_mentions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check for Discord mentions
+        run: |
+          pr_number=${{ github.event.pull_request.number }}
+          
+          pr_url=${{ github.event.pull_request.url }}
+          
+          # Emit a custom event to trigger the Discord bot
+          curl -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/json" -d "{\"event_type\":\"githubIssueSolved\",\"client_payload\":{\"issueUrl\":\"$pr_url\"}}" "https://TODO-add-the-url-here.com"
